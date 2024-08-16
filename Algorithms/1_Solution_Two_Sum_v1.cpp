@@ -57,6 +57,7 @@ int main() {
     Speed_meter speed_meter;
     std::vector<int> vec_test;
     std::cout << "Max size of vector: " << vec_test.max_size() << std::endl;
+    std::cout << "MAX INT" << INT_MAX << std::endl;
 
     {   // test case #1
         std::cout << "test case 1: ";
@@ -71,7 +72,7 @@ int main() {
 
     {   // test case #2
         std::cout << "test case 2: ";
-    
+
         std::vector<int> vec{3,2,4};
         std::vector<int> correct_answer{1,2};
 
@@ -116,7 +117,7 @@ int main() {
         speed_meter.stop();
     }
 
-    {   // test case #6 // both numbers in the end of the vector of 1002 elements    
+    {   // test case #6 // both numbers in the end of the vector of 1002 elements
         std::cout << "test case 6: ";
 
         const int vec_size = 1000;
@@ -156,6 +157,9 @@ int main() {
         speed_meter.restart();
         assert(solution.twoSum(vec,target) == correct_answer);
         speed_meter.stop();
+
+        vec.clear();
+        vec.shrink_to_fit();
     }
 
     {   // test case #8 // both numbers in the end of the vector of 1 000 002 elements
@@ -177,7 +181,11 @@ int main() {
         speed_meter.restart();
         assert(solution.twoSum(vec,target) == correct_answer);
         speed_meter.stop();
+
+        vec.clear();
+        vec.shrink_to_fit();
     }
+
     {   // test case #9 // both numbers in the MIDDLE of the vector of 1000002 elements
         std::cout << "test case 9: 200 002 vec size in the MIDDLE of the vector: ";
 
@@ -200,8 +208,14 @@ int main() {
         speed_meter.restart();
         assert(solution.twoSum(vec,target) == correct_answer);
         speed_meter.stop();
+
+        vec.clear();
+        vec.shrink_to_fit();
+        std::cout << std::endl << "end of test case #9" << std::endl;
     }
-    
+
+    std::cout << "== beetween point ==" << std::endl;
+
     {   // test case #10 // both numbers in the end of the vector of 1 000 002 elements
         std::cout << "test case 10: 1 000 002 vec size in the END of the vector: ";
 
@@ -225,7 +239,7 @@ int main() {
 
     {   // test case #11 // both numbers in the MIDDLE of the vector of 1000002 elements
         std::cout << "test case 11: 1 000 002 vec size in the MIDDLE of the vector: ";
-    
+
         const int vec_size = 1000000;
         std::vector<int> vec;
         int i;
@@ -260,5 +274,27 @@ test case 8: 200 002 vec sieze int the END of the vectorTime taken: 1.29159e+08 
 test case 9: 200 002 vec size in the MIDDLE of the vector: Time taken: 3.10632e+07 microseconds
 
 about test case 10 more that 20 minutes ... I interrupted the program
+
+
+one more try:
+/Leetcode/Algorithms$ ./1_Solution_Two_Sum_v1_tt
+Max size of vector: 2305843009213693951
+MAX INT2147483647
+test case 1: Time taken: 3.285 microseconds
+test case 2: Time taken: 0.897 microseconds
+test case 3: Time taken: 0.646 microseconds
+test case 4: Time taken: 1.169 microseconds
+test case 5: Time taken: 9.036 microseconds
+test case 6: Time taken: 3090.69 microseconds
+test case 7: Time taken: 760.622 microseconds
+test case 8: 200 002 vec sieze int the END of the vectorTime taken: 1.32486e+08 microseconds
+test case 9: 200 002 vec size in the MIDDLE of the vector: Time taken: 3.2615e+07 microseconds
+
+end of test case #9
+== beetween point ==
+test case 10: 1 000 002 vec size in the END of the vector: Time taken: 3.33354e+09 microseconds
+test case 11: 1 000 002 vec size in the MIDDLE of the vector: Time taken: 8.26328e+08 microseconds
+
+My calculation: 3333.54(test case 10) seconds and 826.328 seconds (test case 11)
 */
 
